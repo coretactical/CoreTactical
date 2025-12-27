@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CoreTactical - Militair & survival gear **** serieuze voorbereiding</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="CoreTactical - militair & survival gear voor preppers, airsofters en (semi)professionals. Focus op NFP & Multicam, gear die werkt als het er wél toe doet.">
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --bg-light: #111827;
+            --accent: #16a34a;
+            --accent-soft: #22c55e33;
+            --text-main: #e5e7eb;
+            --text-muted: #9ca3af;
+            --border-soft: #1f2937;
+            --card-bg: #111827;
+            --card-border: #1f2937;
+            --danger: #ef4444;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.5;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        header {
+            border-bottom: 1px solid var(--border-soft);
+            background: #020617;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 1.25rem;
+        }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .logo-mark {
+            width: 28px;
+            height: 28px;
+            border-radius: 999px;
+            background: radial-gradient(circle at 30% 30%, #4ade80, #16a34a 45%, #052e16);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        nav a {
+            margin-left: 1.25rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        nav a:hover {
+            color: var(--text-main);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 3rem 0 2rem;
+            background: radial-gradient(circle at top, #1e293b 0, #020617 55%);
+            border-bottom: 1px solid var(--border-soft);
+        }
+
+        .hero-inner {
+            display: grid;
+            grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            border: 1px solid var(--accent-soft);
+            background: rgba(22, 163, 74, 0.08);
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .hero-badge span {
+            height: 6px;
+            width: 6px;
+            border-radius: 999px;
+            background: #22c55e;
+            box-shadow: 0 0 6px #22c55e;
+        }
+
+        .hero-title {
+            font-size: 2.1rem;
+            line-height: 1.2;
+            margin: 0 0 0.75rem;
+        }
+
+        .hero-subtitle {
+            color: var(--text-muted);
+            font-size: 0.98rem;
+            max-width: 32rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero-bullets {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem;
+            display: grid;
+            gap: 0.35rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .hero-bullets li::before {
+            content: "• ";
+            color: var(--accent);
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            padding: 0.55rem 1.1rem;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid transparent;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, #16a34a, #22c55e);
+            color: #020617;
+            border-color: #22c55e;
+        }
+
+        .btn-primary:hover {
+            filter: brightness(1.05);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border-color: var(--border-soft);
+            color: var(--text-main);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .hero-aside {
+            border-radius: 0.75rem;
+            border: 1px solid var(--card-border);
+            background: radial-gradient(circle at top left, #22c55e11, #020617);
+            padding: 1.25rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .hero-aside h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .hero-aside ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 0.75rem;
+        }
+
+        .hero-aside li::before {
+            content: "▹ ";
+            color: var(--accent);
+        }
+
+        .hero-aside li {
+            margin-bottom: 0.25rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 2.5rem 0;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .section-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.25rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.25rem;
+        }
+
+        .card {
+            border-radius: 0.75rem;
+            border: 1px solid var(--card-border);
+            background: var(--card-bg);
+            padding: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .card h3 {
+            margin: 0 0 0.5rem;
+            font-size: 1rem;
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.15rem 0.5rem;
+            border-radius: 999px;
+            background: #0f172a;
+            border: 1px solid var(--border-soft);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-bottom: 0.4rem;
+        }
+
+        .list-clean {
+            list-style: none;
+            padding: 0;
+            margin: 0.5rem 0 0;
+        }
+
+        .list-clean li {
+            margin-bottom: 0.25rem;
+            color: var(--text-muted);
+            font-size: 0.86rem;
+        }
+
+        .list-clean li::before {
+            content: "– ";
+            color: var(--text-muted);
+        }
+
+        /* Email section */
+        .email-section {
+            border-radius: 0.9rem;
+            border: 1px solid var(--accent-soft);
+            background: radial-gradient(circle at top left, #22c55e11, #020617);
+            padding: 1.5rem;
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 2fr);
+            gap: 1.25rem;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .email-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .email-text {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+        }
+
+        .email-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .email-input {
+            flex: 1 1 180px;
+            padding: 0.55rem 0.75rem;
+            border-radius: 999px;
+            border: 1px solid var(--card-border);
+            background: #020617;
+            color: var(--text-main);
+            font-size: 0.88rem;
+        }
+
+        .email-input::placeholder {
+            color: #4b5563;
+        }
+
+        footer {
+            border-top: 1px solid var(--border-soft);
+            padding: 1.5rem 0;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        footer a {
+            color: var(--text-muted);
+        }
+
+        footer a:hover {
+            color: var(--accent);
+        }
+
+        @media (max-width: 900px) {
+
+            .hero-inner,
+            .email-section,
+            .grid-3,
+            .grid-2 {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .hero {
+                padding-top: 2.25rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .topbar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            nav a {
+                margin-left: 0.75rem;
+                font-size: 0.85rem;
+            }
+
+            .hero-title {
+                font-size: 1.7rem;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container topbar">
+            <div class="logo">
+                <div class="logo-mark">CT</div>
+                <div>CoreTactical</div>
+            </div>
+            <nav><a href="#shop">Shop</a> <a href="#guides">Guides</a> <a href="#about">**** ons</a> <a href="#contact">Contact</a></nav>
+        </div>
+    </header>
+    <main><!-- HERO -->
+        <section class="hero">
+            <div class="container hero-inner">
+                <div>
+                    <div class="hero-badge">
+                        <div>Militair &amp; ******** **** &bull; NFP &amp; Multicam</div>
+                    </div>
+                    <h1 class="hero-title">******** &amp; survival gear voor serieuze voorbereiding</h1>
+                    <p class="hero-subtitle">Uitrusting voor preppers, ********** ** (semi)professionals &ndash; geselecteerd op ******* ** *** veld, **** ** mooi weer.</p>
+                    <ul class="hero-bullets">
+                        <li>********* militaire &amp; survival gear</li>
+                        <li>***** op functionaliteit, ************ en gebruiksgemak</li>
+                        <li>Gericht ** preppers, airsofters en (semi)professionals</li>
+                    </ul>
+                    <div class="hero-actions"><a href="#shop" class="btn-primary">Bekijk ** shop</a> <a href="#guides" class="btn-secondary">Ontdek onze gear-guides</a></div>
+                </div>
+                <aside class="hero-aside">
+                    <h3>************ ** het kort</h3>
+                    <ul>
+                        <li>Focus ** NFP &amp; Multicam camouflage</li>
+                        <li>Militair ge&iuml;********** **** **** praktijkgebruik</li>
+                        <li>Speciaal voor preppers, airsofters en professionals</li>
+                    </ul>
+                    <p>Geen vitrinespul, maar uitrusting die logisch ** opgebouwd en zich in het veld heeft bewezen. Gear die werkt als het ** w&eacute;l toe doet.</p>
+                </aside>
+            </div>
+        </section><!-- VOOR WIE WE BOUWEN -->
+        <section id="target" class="section">
+            <div class="container">
+                <h2 class="section-title">**** wie we bouwen</h2>
+                <p class="section-subtitle">CoreTactical richt zich op drie duidelijke groepen die ******** eisen ******* *** hun uitrusting.</p>
+                <div class="grid-3">
+                    <div class="card">
+                        <div class="pill">Preppers &amp; survival</div>
+                        <h3>Preppers &amp; survival-liefhebbers</h3>
+                        <p>Jij wilt voorbereid zijn op het onverwachte. Wij ****** met ********** **** voor je EDC, bug-out *** en thuisvoorraad &ndash; zonder onzin, *** ******* *** echt ******** ****** ** het veld.</p>
+                    </div>
+                    <div class="card">
+                        <div class="pill">Airsoft &amp; milsim</div>
+                        <h3>********** &amp; tactische hobbyisten</h3>
+                        <p>Van plate carriers en pouches *** ****** ** kleding: **** *** tegen een stootje kan en ******* is opgebouwd, zodat je in *** veld minder met je uitrusting ** **** *** je game bezig bent.</p>
+                    </div>
+                    <div class="card">
+                        <div class="pill">Professionals</div>
+                        <h3>(Semi)professionals in uniform</h3>
+                        <p>Militairen, BOA&rsquo;s, beveiligers ** andere professionals ****** geen **** voor rommel. We selecteren gear met het oog op ********* gebruik, robuustheid ** functionaliteit.</p>
+                    </div>
+                </div>
+            </div>
+        </section><!-- CATEGORIEËN -->
+        <section id="shop">
+            <div class="container">
+                <h2 class="section-title">**** hoofdcategorie&euml;n</h2>
+                <p class="section-subtitle">Een ********* van de ************* lijnen ** onze shop. Met focus op *** &amp; Multicam en gear die echt gebruikt wordt.</p>
+                <div class="grid-3">
+                    <div class="card">
+                        <h3>EDC &amp; Tools</h3>
+                        <p>EDC (******** Carry) is de basis van voorbereiding. ** deze categorie vind je compacte tools, lampen, hardcases en andere ********** die je dagelijks bij je kunt dragen &ndash; thuis, ** werk en onderweg.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Pouches &amp; Load-******* Gear</h3>
+                        <p>Je load-out staat ** valt *** *** je je gear draagt. Hier vind ** fanny packs, magazijnpouches, radio pouches, medic-pouches, weapon slings en meer &ndash; met focus op NFP en Multicam camouflage.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Kleding &amp; Headgear</h3>
+                        <p>Combatshirts, broeken, boonies, petten, buffs en handschoenen ge&iuml;nspireerd op militair gebruik. ******* om te dragen onder ***** carriers, tijdens skirms of in het veld.</p>
+                    </div>
+                </div>
+                <div class="grid-2" style="margin-top:1.25rem;">
+                    <div class="card">
+                        <h3>******* &amp; ***** Aid</h3>
+                        <p>**************** voor ** persoonlijke ******** setup: tourniquet-pouches, scharen ** ******* pouches. Altijd met nadruk op snelle ******* ** duidelijke herkenbaarheid. Geen vervanging voor ************* ******** **** ** training.</p>
+                    </div>
+                    <div class="card">
+                        <h3>******** &amp; Equipment</h3>
+                        <p>Hier **** je *** ************ onderscheidt: ** tactische anti-drone paraplu, prepper powerstations, ********** hardcases en andere speciale items voor serieuze voorbereiding.</p>
+                    </div>
+                </div>
+            </div>
+        </section><!-- WAAROM CORETactical -->
+        <section>
+            <div class="container">
+                <h2 class="section-title">Waarom CoreTactical?</h2>
+                <p class="section-subtitle">Geen gimmicks, maar ******** ge&iuml;nspireerde gear **** mensen die liever voorbereid zijn *** verrast.</p>
+                <div class="grid-2">
+                    <div class="card">
+                        <h3>Militair ge&iuml;nspireerd, praktisch getest</h3>
+                        <p>Geen vitrinespul, **** gear die gebaseerd ** op militaire en survivalervaring &ndash; ************ op *** ***** als het er w&eacute;l toe doet.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Focus op voorbereiding, niet alleen op &ldquo;stoer&rdquo;</h3>
+                        <p>We ******* ons op ****** die &eacute;*** voorbereid ****** zijn: preppers, airsofters en professionals. Design is **** meegenomen, maar *************** staat altijd op 1.</p>
+                    </div>
+                </div>
+                <div class="grid-2" style="margin-top:1.25rem;">
+                    <div class="card">
+                        <h3>Heldere uitleg bij *** product</h3>
+                        <p>**** vage omschrijvingen, **** duidelijke info: wat het is, wanneer je *** gebruikt, wat de sterke ****** zijn en waar je ** moet letten.</p>
+                    </div>
+                    <div class="card">
+                        <h3>***** in Nederland, gericht op groei</h3>
+                        <p>** beginnen in Nederland met scherpe selectie ** duidelijke ******* &ndash; met de ambitie ** later ****** in ****** actief te zijn.</p>
+                    </div>
+                </div>
+            </div>
+        </section><!-- GUIDES / KENNISBANK -->
+        <section id="guides">
+            <div class="container">
+                <h2 class="section-title">Gear-****** &amp; how-to&rsquo;s</h2>
+                <p class="section-subtitle">**** ****** spullen, **** ook kennis. Praktische uitleg **** EDC, bug-out bags, airsoft-loadouts en meer.</p>
+                <div class="grid-3">
+                    <div class="card">
+                        <h3>De ***** van een EDC-setup</h3>
+                        <p>Hoe stel ** een ********** **** serieuze EDC-setup samen als ******* ** professional? We breken het terug naar essentials en praktijk.</p>
+                    </div>
+                    <div class="card">
+                        <h3>1st, 2nd &amp; 3rd line gear</h3>
+                        <p>First line, ****** line, third line gear &ndash; simpel uitgelegd. ***** gear hoort waar, en waarom?</p>
+                    </div>
+                    <div class="card">
+                        <h3>Bug-out bag vs. get-home bag</h3>
+                        <p>Wat is *** verschil, ** welke uitrusting past in ***** tas? We leggen het **** voor stap uit.</p>
+                    </div>
+                </div>
+            </div>
+        </section><!-- OVER ONS KORTE PREVIEW -->
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title">Over CoreTactical</h2>
+                <p class="section-subtitle">Goede uitrusting is **** luxe, maar een vorm van voorbereiding.</p>
+                <div class="card">
+                    <p>************ is ** ******* voor ******** ge&iuml;nspireerde uitrusting en ******** **** voor preppers, airsofters en (semi)professionals. ** ******** op gear die in de praktijk werkt &ndash; niet alleen ** foto&rsquo;s.</p>
+                    <p style="margin-top:0.75rem;">We kijken ***** naar functie, daarna pas naar uiterlijk. We leggen in gewone **** *** wanneer je een item gebruikt, *** ** het inzet en waar je op moet letten. **** voor stap bouwen ** een kennisbank op, zodat je **** alleen spullen koopt, **** *** beter begrijpt *** ** ze ********* gebruikt.</p>
+                </div>
+            </div>
+        </section><!-- EMAIL INSCHRIJVING -->
+        <section>
+            <div class="container">
+                <div class="email-section">
+                    <div>
+                        <div class="email-title">Blijf &eacute;&eacute;n **** voor</div>
+                        <p class="email-text">Schrijf je in voor CoreTactical-updates en ******* als eerste nieuwe gear, ********** guides ** exclusieve deals voor preppers, ********** en professionals. Geen spam, ****** relevante **** over ******** &amp; ******** gear die ***** als het er w&eacute;l toe doet.</p>
+                    </div>
+                    <div>
+                        <form class="email-form"><input type="email" class="email-input" placeholder="jouw@emailadres.nl"> <button type="submit" class="btn-primary">Ja, ik wil ***** voorbereid zijn</button></form>
+                        <p style="margin-top:0.5rem;color:var(--text-muted);font-size:0.78rem;">**** ** ** ** ********* ga je akkoord met onze privacyverklaring. Je kunt ** ****** uitschrijven.</p>
+                    </div>
+                </div>
+            </div>
+        </section><!-- CONTACT / FOOTER -->
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title">Contact &amp; vragen</h2>
+                <p class="section-subtitle">Vragen over gear, levering of samenwerking? Neem contact op &ndash; we denken graag met ** mee.</p>
+                <div class="card">
+                    <ul class="list-clean">
+                        <li>E-mail: info@coretactical.nl (voorbeeld)</li>
+                        <li>Social: Instagram &amp; TikTok &ndash; @coretactical (voorbeeld)</li>
+                        <li>Bereikbaarheid: bij voorkeur via e-mail; ** streven naar antwoord ****** 1&ndash;2 werkdagen.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;">
+                <div>&copy; CoreTactical. **** rechten voorbehouden.</div>
+                <div><a href="#">Algemene voorwaarden</a> &middot; <a href="#">Privacybeleid</a> &middot; <a href="#">Retourbeleid</a></div>
+            </div>
+        </div>
+        <script>
+            document.getElementById('year').textContent = *** Date().getFullYear();
+        </script>
+    </footer>
+
+<div style="color: red">Word to HTML trial - please <a href="https://wordtohtml.net/site/payment">Go PRO</a> to get whole HTML.</div>
+</body>
+
+</html>
